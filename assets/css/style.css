@@ -1,0 +1,108 @@
+/* Portfolio Styles for a "Cyberpunk" Theme
+    - Uses monospace font for a terminal-like feel
+    - Dark background with a vibrant lime green accent
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color: #2dd4bf; /* Teal */
+    --accent-color: #a3e635;  /* Lime Green */
+    --bg-dark: #0a0a0a;       /* Zinc 950 */
+    --text-light: #f4f4f5;    /* Zinc 100 */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--accent-color);
+    font-family: 'Source Code Pro', monospace;
+}
+
+.page-content {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-link {
+    @apply relative text-white transition-colors duration-300 before:absolute before:left-0 before:bottom-0 before:h-0.5 before:w-full before:bg-lime-400 before:scale-x-0 before:transition-transform before:duration-300 hover:text-lime-400 hover:before:scale-x-100;
+}
+
+.nav-link.active {
+    @apply text-lime-400;
+}
+
+.section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-12 relative;
+}
+
+.section-title::after {
+    content: '';
+    @apply absolute -bottom-6 left-1/2 -translate-x-1/2 w-24 h-1 bg-lime-400 rounded-full;
+}
+
+/* Reusable Components */
+
+.data-block {
+    @apply bg-zinc-900 border-2 border-lime-400/30 rounded-lg p-6 shadow-lg hover:border-lime-400 transition-all duration-300;
+}
+
+.data-block-title {
+    @apply text-xl font-bold text-white mb-2;
+}
+
+.data-block-text {
+    @apply text-sm text-zinc-400 font-sans leading-relaxed;
+}
+
+.data-block-link {
+    @apply mt-4 inline-block text-lime-400 hover:text-white transition-colors duration-300;
+}
+
+.terminal-button {
+    @apply px-6 py-3 rounded-full font-bold uppercase tracking-wide text-zinc-900 bg-lime-400 transition-all duration-300 hover:bg-white focus:outline-none focus:ring-4 focus:ring-lime-400/50;
+}
+
+.terminal-button-secondary {
+    @apply px-6 py-3 rounded-full font-bold uppercase tracking-wide text-lime-400 border-2 border-lime-400 transition-all duration-300 hover:bg-lime-400 hover:text-zinc-900 focus:outline-none focus:ring-4 focus:ring-lime-400/50;
+}
+
+.terminal-input {
+    @apply w-full p-3 rounded-md bg-zinc-800 text-lime-400 border border-lime-400/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-lime-400;
+}
+
+/* Table Styling */
+.data-table {
+    @apply border-collapse table-auto w-full text-left font-sans;
+}
+
+.data-table th, .data-table td {
+    @apply p-4 border-b border-lime-400/20;
+}
+
+.data-table th {
+    @apply text-white font-bold uppercase tracking-wider;
+}
+
+.data-table tbody tr:hover {
+    @apply bg-zinc-900;
+}
+
+.table-image {
+    @apply w-20 h-auto rounded-md border border-lime-400/20 shadow-md transition-transform duration-300 hover:scale-105;
+}
+
+.table-link {
+    @apply text-white font-bold hover:underline transition-colors duration-300;
+}
