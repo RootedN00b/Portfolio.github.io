@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://rootedn00b.tech/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://rootedn00b.tech/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Projects -->
+  <url>
+    <loc>https://rootedn00b.tech/index.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog (external, but link it for SEO consistency) -->
+  <url>
+    <loc>https://blog.rootedn00b.tech/</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://rootedn00b.tech/contact.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
