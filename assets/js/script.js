@@ -1,79 +1,33 @@
-// JavaScript for SPA routing, mobile menu, and Hashnode/YouTube integration.
+// JavaScript for Portfolio Functionality
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Page Switching (SPA Logic) ---
-    const pages = document.querySelectorAll('.page-content');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const showPage = (pageId) => {
-        pages.forEach(page => {
-            if (page.dataset.page === pageId) {
-                page.classList.remove('hidden');
-                page.classList.add('active-page');
-            } else {
-                page.classList.add('hidden');
-                page.classList.remove('active-page');
-            }
-        });
-
-        navLinks.forEach(link => {
-            if (link.dataset.page === pageId) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-    };
-
-    // Listen for navigation clicks
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const pageId = event.target.dataset.page;
-            showPage(pageId);
-        });
-    });
-
-    // Handle initial page load
-    const initialPage = window.location.hash.substring(1) || 'home';
-    showPage(initialPage);
-
-    // --- Mobile Menu Toggle ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
+    // Toggle the mobile menu on button click
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Close mobile menu on nav click
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-    });
-
-    // --- Hashnode Blog Integration ---
-    // Replace this with your Hashnode username
-    const HASHNODE_USERNAME = 'RootedNoob';
+    const HASHNODE_USERNAME = 'YOUR_HASHNODE_USERNAME'; // Replace with your Hashnode username
     const blogPostsContainer = document.getElementById('blog-posts-container');
-    const errorMessage = (message) => `<tr><td colspan="3" class="text-center py-4"><p class="data-block-text text-red-500">${message}</p></td></tr>`;
+    const blogPosts = []; // Local cache for blog posts
 
-    const fetchBlogPosts = async () => {
-        if (HASHNODE_USERNAME === 'RootedNoob') {
-            blogPostsContainer.innerHTML = errorMessage("Error: Hashnode username not configured. Check the script.");
+    async function fetchBlogPosts() {
+        if (blogPosts.length > 0) {
+            renderBlogPosts(blogPosts);
             return;
         }
 
         const query = `
-            query GetUserArticles($username: String!) {
-                user(username: $username) {
+            query {
+                user(username: "${HASHNODE_USERNAME}") {
                     publication {
                         posts(page: 0) {
                             title
-                            slug
                             brief
+                            slug
                             coverImage
                         }
                     }
@@ -87,151 +41,146 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    query: query,
-                    variables: { username: HASHNODE_USERNAME }
-                }),
+                body: JSON.stringify({ query }),
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            const result = await response.json();
+            const fetchedPosts = result.data.user.publication.posts;
+
+            if (fetchedPosts && fetchedPosts.length > 0) {
+                blogPosts.push(...fetchedPosts);
+                renderBlogPosts(blogPosts);
+            } else {
+                blogPostsContainer.innerHTML = '<tr><td colspan="3" class="text-center py-4"><p class="data-block-text">No blog posts found.</p></td></tr>';
             }
-
-            const data = await response.json();
-            if (data.errors) {
-                throw new Error(data.errors.map(err => err.message).join(', '));
-            }
-
-            const posts = data.data.user.publication.posts;
-            renderBlogPosts(posts);
-        } catch (err) {
-            console.error("Failed to fetch blog posts:", err);
-            blogPostsContainer.innerHTML = errorMessage("Failed to load blog posts. Check your username and network.");
+        } catch (error) {
+            console.error('Error fetching blog posts:', error);
+            blogPostsContainer.innerHTML = '<tr><td colspan="3" class="text-center py-4"><p class="data-block-text">Error fetching posts. Please try again later.</p></td></tr>';
         }
-    };
+    }
 
-    const renderBlogPosts = (posts) => {
-        if (posts.length === 0) {
-            blogPostsContainer.innerHTML = '<tr><td colspan="3" class="text-center py-4"><p class="data-block-text">No blog posts found.</p></td></tr>';
-            return;
-        }
-
-        blogPostsContainer.innerHTML = ''; // Clear loading message
-
+    function renderBlogPosts(posts) {
+        if (!blogPostsContainer) return;
+        blogPostsContainer.innerHTML = '';
         posts.forEach(post => {
-            const postUrl = `https://hashnode.com/@${HASHNODE_USERNAME}/${post.slug}`;
-            const postRow = `
-                <tr>
-                    <td>
-                        <a href="${postUrl}" target="_blank" rel="noopener noreferrer">
-                            <img src="${post.coverImage || 'https://placehold.co/100x75/0a0a0a/a3e635?text=blog'}" alt="${post.title} cover image" class="table-image">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="table-link">${post.title}</a>
-                    </td>
-                    <td><p class="data-block-text font-sans">${post.brief}</p></td>
-                </tr>
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <a href="https://${HASHNODE_USERNAME}.hashnode.dev/${post.slug}" target="_blank">
+                        <img src="${post.coverImage}" alt="${post.title}" class="table-image">
+                    </a>
+                </td>
+                <td>
+                    <a href="https://${HASHNODE_USERNAME}.hashnode.dev/${post.slug}" target="_blank" class="table-link">${post.title}</a>
+                </td>
+                <td class="data-block-text font-sans">${post.brief}</td>
             `;
-            blogPostsContainer.innerHTML += postRow;
+            blogPostsContainer.appendChild(row);
         });
-    };
+    }
 
-    fetchBlogPosts();
+    // Call function only if on the blog page
+    if (document.getElementById('blog-page')) {
+        fetchBlogPosts();
+    }
 
-    // --- YouTube Video Integration ---
-    const youtubeSearchInput = document.getElementById('youtube-search-input');
+    // YouTube Video Search and Display
     const youtubeSearchButton = document.getElementById('youtube-search-button');
+    const youtubeSearchInput = document.getElementById('youtube-search-input');
     const youtubeResultsContainer = document.getElementById('youtube-results-container');
     const videoPlayerContainer = document.getElementById('video-player-container');
     const videoIframe = document.getElementById('video-iframe');
     const videoSummary = document.getElementById('video-summary');
 
-    // Initial load with a default query
-    fetchYoutubeVideos('cybersecurity tutorials');
+    if (youtubeSearchButton) {
+        youtubeSearchButton.addEventListener('click', async () => {
+            const query = youtubeSearchInput.value.trim();
+            if (query === '') return;
 
-    youtubeSearchButton.addEventListener('click', () => {
-        const query = youtubeSearchInput.value || 'cybersecurity tutorials';
-        fetchYoutubeVideos(query);
-    });
+            youtubeResultsContainer.innerHTML = `<tr><td colspan="3" class="text-center py-4"><p class="data-block-text">Searching for videos...</p></td></tr>`;
 
-    const fetchYoutubeVideos = async (query) => {
-        youtubeResultsContainer.innerHTML = '<tr><td colspan="3" class="text-center py-4"><p class="data-block-text">Searching YouTube...</p></td></tr>';
+            // API Call for video search (simulated)
+            // In a real scenario, you would use a YouTube Data API key here.
+            // For now, this is a placeholder response.
+            const response = [
+                {
+                    title: 'Intro to Ethical Hacking - A Beginner\'s Guide',
+                    id: 'videosim1',
+                    thumbnail: 'https://placehold.co/100x75/0a0a0a/a3e635?text=Ethical+Hacking',
+                    summary: 'This video provides a comprehensive overview of ethical hacking, covering key concepts, methodologies, and the tools used in penetration testing. It is perfect for beginners looking to get started in cybersecurity.',
+                    url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                },
+                {
+                    title: 'How to Build a Homelab for Penetration Testing',
+                    id: 'videosim2',
+                    thumbnail: 'https://placehold.co/100x75/0a0a0a/a3e635?text=Homelab',
+                    summary: 'Learn how to set up a secure virtual lab environment to practice penetration testing techniques without risking real-world systems. This video covers hypervisor installation and VM configuration.',
+                    url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                }
+            ];
 
-        try {
-            // Using `Google Search` to find relevant videos based on popularity/relevance
-            const searchResults = await new Promise(resolve => {
-                // Mocking tool call as this environment cannot make API calls
-                console.log(`Searching YouTube for: ${query}`);
-                setTimeout(() => resolve({
-                    "results": [
-                        { "title": "What is Penetration Testing?", "url": "https://www.youtube.com/watch?v=R-k1wWq_K44", "channel_name": "Hak5" },
-                        { "title": "Linux Server Hardening Basics", "url": "https://www.youtube.com/watch?v=F0_E98c6q7w", "channel_name": "NetworkChuck" },
-                        { "title": "Python for Network Engineers", "url": "https://www.youtube.com/watch?v=d_M-fJ35h_I", "channel_name": "David Bombal" }
-                    ]
-                }), 1000);
-            });
-            renderYoutubeResults(searchResults.results);
-        } catch (error) {
-            console.error('Failed to fetch YouTube videos:', error);
-            youtubeResultsContainer.innerHTML = errorMessage("Failed to load videos. Please try again later.");
-        }
-    };
-
-    const fetchVideoSummary = async (videoUrl) => {
-        videoSummary.innerHTML = 'Loading video summary...';
-        try {
-            // Mocking tool call to get a summary
-            const summaryResult = await new Promise(resolve => {
-                console.log(`Getting summary for: ${videoUrl}`);
-                setTimeout(() => resolve(`This video provides an introductory overview of penetration testing, explaining the different phases of a pentest and the tools used by ethical hackers to find and exploit vulnerabilities in a system. [00:01:23]`), 1000);
-            });
-            videoSummary.innerHTML = summaryResult;
-        } catch (error) {
-            console.error('Failed to get video summary:', error);
-            videoSummary.innerHTML = 'Failed to load summary.';
-        }
-    };
-
-    const renderYoutubeResults = (videos) => {
-        if (videos.length === 0) {
-            youtubeResultsContainer.innerHTML = '<tr><td colspan="3" class="text-center py-4"><p class="data-block-text">No videos found for this query.</p></td></tr>';
-            return;
-        }
-
-        youtubeResultsContainer.innerHTML = '';
-        videos.forEach(video => {
-            const videoId = new URLSearchParams(new URL(video.url).search).get('v');
-            const row = `
-                <tr>
+            youtubeResultsContainer.innerHTML = '';
+            response.forEach(video => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${video.thumbnail}" alt="${video.title}" class="table-image"></td>
+                    <td class="data-block-text font-sans">${video.title}</td>
                     <td>
-                        <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${video.title} thumbnail" class="table-image">
+                        <button class="play-video-button terminal-button" data-video-id="${video.id}">View</button>
                     </td>
-                    <td>
-                        <p class="table-link text-white">${video.title}</p>
-                        <p class="data-block-text text-xs text-zinc-500 font-sans">by ${video.channel_name}</p>
-                    </td>
-                    <td class="whitespace-nowrap">
-                        <button class="terminal-button-secondary py-2 px-4 text-xs read-content-btn" data-url="${video.url}">Read Content</button>
-                    </td>
-                </tr>
-            `;
-            youtubeResultsContainer.innerHTML += row;
+                `;
+                youtubeResultsContainer.appendChild(row);
+            });
+            attachPlayButtonListeners(response);
         });
+    }
 
-        // Add event listeners for the "Read Content" buttons
-        document.querySelectorAll('.read-content-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const videoUrl = event.target.dataset.url;
-                const videoId = new URLSearchParams(new URL(videoUrl).search).get('v');
-                
-                // Show player and load video
-                videoPlayerContainer.classList.remove('hidden');
-                videoIframe.innerHTML = `<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${videoId}?rel=0" frameborder="0" allowfullscreen></iframe>`;
-                
-                // Fetch and display summary
-                fetchVideoSummary(videoUrl);
+    function attachPlayButtonListeners(videos) {
+        document.querySelectorAll('.play-video-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const videoId = e.target.dataset.videoId;
+                const video = videos.find(v => v.id === videoId);
+                if (video) {
+                    videoIframe.innerHTML = `<iframe src="${video.url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full rounded-md"></iframe>`;
+                    videoSummary.textContent = video.summary;
+                    videoPlayerContainer.classList.remove('hidden');
+                }
             });
         });
-    };
+    }
+
+    // Certification Modal Logic
+    const certCards = document.querySelectorAll('.certification-card');
+    const certModal = document.getElementById('certification-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalDescription = document.getElementById('modal-description');
+    const modalCloseButton = document.getElementById('modal-close-button');
+
+    if (certCards.length > 0) {
+        certCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const imageSrc = card.querySelector('img').src;
+                const description = card.dataset.description;
+
+                modalImage.src = imageSrc;
+                modalDescription.textContent = description;
+
+                certModal.classList.remove('hidden');
+                setTimeout(() => {
+                    certModal.classList.remove('opacity-0');
+                    certModal.querySelector('.data-block').classList.remove('scale-95');
+                }, 10);
+            });
+        });
+    }
+
+    if (modalCloseButton) {
+        modalCloseButton.addEventListener('click', () => {
+            certModal.classList.add('opacity-0');
+            certModal.querySelector('.data-block').classList.add('scale-95');
+            setTimeout(() => {
+                certModal.classList.add('hidden');
+            }, 300);
+        });
+    }
 });
