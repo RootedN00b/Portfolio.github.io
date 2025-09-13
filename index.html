@@ -1,246 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <!-- Apple touch icon (for iOS/Android homescreen) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.png">
-    <title>RootedN00b - Professional Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RootedN00b - Professional Portfolio</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-zinc-950 text-lime-400 font-mono antialiased">
 
-    <!-- Main Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-zinc-950/90 backdrop-blur-sm p-4 border-b-2 border-lime-400/20 shadow-lg">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-widest hover:text-white transition-colors duration-300" data-page="home">
-                <span class="text-lime-400">&lt;</span><span class="text-white">rootedN00b</span><span class="text-lime-400">/&gt;</span>
-            </a>
-            
-            <button id="mobile-menu-button" class="md:hidden p-2 text-lime-400 hover:text-white transition-colors duration-300">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-zinc-950/95 backdrop-blur-sm border-b border-lime-400/20 shadow">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+      <!-- Logo -->
+      <a href="index.html" class="text-xl font-bold tracking-widest">
+        <span class="text-lime-400">&lt;</span>
+        <span class="text-white">rootedN00b</span>
+        <span class="text-lime-400">/&gt;</span>
+      </a>
 
-            <div id="desktop-nav" class="hidden md:flex space-x-6">
-                <a href="https://github.com/RootedN00b/Projects" class="nav-link" data-page="projects">Projects</a>
-                <a href="https://drive.google.com/file/d/1ouaoqwo3ojGjIYlvuHLFkGTNs-T9Mfru/view?usp=sharing" class="nav-link" data-page="resume">Resume</a>
-                <a href="https://blog.rootedn00b.tech" class="nav-link" data-page="blog">Blog</a>
-                <a href="#videos" class="nav-link" data-page="videos">Videos</a>
-                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
-                <a href="#certifications" class="nav-link" data-page="contact">Certifications</a>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-lime-400/20 shadow-md">
-            <div class="flex flex-col items-center py-4 space-y-2">
-                <a href="https://github.com/RootedN00b/Projects" class="nav-link mobile-nav-link" data-page="projects">Projects</a>
-                <a href="https://drive.google.com/file/d/1ouaoqwo3ojGjIYlvuHLFkGTNs-T9Mfru/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a> <!-- data-page="resume" class="nav-link mobile-nav-link" -->
-                <a href="https://blog.rootedn00b.tech" class="nav-link mobile-nav-link" data-page="blog">Blog</a>
-                <a href="#videos" class="nav-link mobile-nav-link" data-page="videos">Videos</a>
-                <a href="#contact" class="nav-link mobile-nav-link" data-page="contact">Contact</a>
-            </div>
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex space-x-6">
+        <a href="https://github.com/RootedN00b"  class="nav-link">Projects</a>
+        <a href="https://drive.google.com/file/d/1GN7W0TxYo88htbnAI6vGPWo-UEgHgSEy/view?usp=sharing"  class="nav-link">Resume</a>
+        <a href="https://blog.rootedn00b.tech"  class="nav-link">Blog</a>
+        <a href="#videos" class="nav-link">Videos</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden p-2 text-lime-400 hover:text-white transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-lime-400/20">
+      <div class="flex flex-col items-center py-4 space-y-2">
+        <a href="https://github.com/RootedN00b"  class="mobile-nav-link">Projects</a>
+        <a href="https://drive.google.com/file/d/1GN7W0TxYo88htbnAI6vGPWo-UEgHgSEy/view?usp=sharing"  class="mobile-nav-link">Resume</a>
+        <a href="https://blog.rootedn00b.tech"  class="mobile-nav-link">Blog</a>
+        <a href="#videos" class="mobile-nav-link">Videos</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="#certifications" class="mobile-nav-link">Certifications</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="pt-24 container mx-auto px-4 max-w-5xl">
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center space-y-6">
+      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold">
+        <span class="text-white">rootedN00b:~$ </span>
+        <span class="text-lime-400">welcome</span>
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-400 max-w-3xl font-sans leading-relaxed">
+        Hello, my name is <span class="text-lime-400 font-bold">Vasty Kervens Guivaldo Desir</span>, 
+        but in the digital world, I'm known as <span class="text-lime-400 font-bold">RootedN00b</span>. 
+        A passionate of Offensive Security <span class="text-lime-400">(Pentesting)</span>, 
+        <span class="text-lime-400">system</span> and <span class="text-lime-400">network administration</span>, 
+        I specialize breaking into networks to help organizations enhance their security from the ground up. 
+        This portfolio is a showcase of my journey in cybersecurity, system and network administration, 
+        a collection of projects where I've put my skills in a day-to-day basis.
+      </p>
+        <div class="data-block w-full max-w-lg animate-reveal">
+          <h2 class="contact-section-title">Contact</h2>
+          <div class="p-6 text-center">
+            <p class="data-block-text mb-6">
+              Want to discuss a project or network security? Reach me directly at:
+            </p>
+            <a href="mailto:dkervensguivaldo@gmail.com" class="terminal-button">Email Me</a>
+          </div>
         </div>
-    </header>
+    </section>
+  </main>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMS5C6EESV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Footer -->
+  <footer class="py-6 text-center text-zinc-400 text-sm border-t border-lime-400/20">
+    <p class="font-sans">&copy; 2025 VKG Desir. All Rights Reserved.</p>
+  </footer>
 
-  gtag('config', 'G-BMS5C6EESV');
-</script>
-
-    <!-- Main Content Container for pages -->
-    <main class="pt-20 container mx-auto px-4 max-w-7xl">
-        
-        <!-- Home Page -->
-        <section id="home-page" data-page="home" class="page-content active-page min-h-screen flex flex-col justify-center items-center text-center p-4">
-            <div class="space-y-4">
-                <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold">
-                    <span class="text-white">rootedN00b:~$ </span><span class="text-lime-400">welcome</span>
-                </h1>
-                <p class="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto font-sans">Hello, my name is <span class="text-lime-400"><strong>Vasty Kervens Guivaldo Desir</strong></span>, but in the digital world, I'm known as <span class="text-lime-400"><strong>RootedN00b</strong></span>. A passionate of Offensive Security <span class="text-lime-400">(Pentesting)</span>, <span class="text-lime-400">system</span> and <span class="text-lime-400">network administration</span>, I specialize breaking into network to help organization enhence their security from the ground up. This portfolio is a showcase of my journey in cybersecurity, system and network administration, a collection of projects where I've put my skills in a day to day basis.</p>
-                <!-- <p class="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto font-sans">
-                    I am a <span class="text-lime-400">pentester</span>, <span class="text-lime-400">Windows server</span> and <span class="text-lime-400">networking administrator</span>. I specialize in securing systems and building robust network infrastructures.
-                </p> -->
-                <div class="flex justify-center space-x-4 pt-4">
-                    <button class="terminal-button" data-page="projects">View Projects</button>
-                    <a href="mailto:your.email@example.com" class="terminal-button-secondary">Contact Me</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Page -->
-        <section id="projects-page" data-page="projects" class="page-content hidden min-h-screen py-16">
-            <h2 class="section-title">projects</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full data-table">
-                    <thead>
-                        <tr>
-                            <th class="w-24">Image</th>
-                            <th class="w-1/3 text-left">Project Name</th>
-                            <th class="text-left">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Project 1 -->
-                        <tr>
-                            <td>
-                                <a href="#" target="_blank">
-                                    <img src="https://placehold.co/100x75/0a0a0a/a3e635?text=scan" alt="Network Scan Automation" class="table-image">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="#" target="_blank" class="table-link">Network Scan Automation</a>
-                            </td>
-                            <td>A Python script to automate network reconnaissance and vulnerability scanning using popular tools. This project helps in streamlining initial security assessments.</td>
-                        </tr>
-                        <!-- Project 2 -->
-                        <tr>
-                            <td>
-                                <a href="#" target="_blank">
-                                    <img src="https://placehold.co/100x75/0a0a0a/a3e635?text=dashboard" alt="Secure Syslog Dashboard" class="table-image">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="#" target="_blank" class="table-link">Secure Syslog Dashboard</a>
-                            </td>
-                            <td>A custom dashboard to aggregate and visualize syslog data from multiple network devices, aiding in real-time threat detection and analysis.</td>
-                        </tr>
-                        <!-- Project 3 -->
-                        <tr>
-                            <td>
-                                <a href="#" target="_blank">
-                                    <img src="https://placehold.co/100x75/0a0a0a/a3e635?text=hardening" alt="Custom OS Hardening Script" class="table-image">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="#" target="_blank" class="table-link">Custom OS Hardening Script</a>
-                            </td>
-                            <td>A shell script designed to automatically apply best practice security configurations to Linux servers, significantly reducing their attack surface.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Resume Page -->
-        <section id="resume-page" data-page="resume" class="page-content hidden min-h-screen py-16 flex items-center justify-center">
-            <div class="data-block w-full max-w-3xl">
-                <h2 class="section-title">resume.pdf</h2>
-                <div class="p-8">
-                    <p class="data-block-text font-sans">
-                        As a dedicated security professional and systems administrator, I specialize in creating and maintaining secure and reliable IT environments. My experience includes penetration testing, network monitoring, server hardening, and automating tasks with Python and shell scripting.
-                    </p>
-                    <div class="mt-8 text-center">
-                        <a href="/assets/resume/Kervens Desir_ IT engineer Resume.pdf" target="_blank" class="terminal-button">
-                            Download Resume
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Page -->
-        <section id="blog-page" data-page="blog" class="page-content hidden min-h-screen py-16">
-            <h2 class="section-title">blog</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full data-table">
-                    <thead>
-                        <tr>
-                            <th class="w-24">Cover</th>
-                            <th class="text-left w-1/3">Title</th>
-                            <th class="text-left">Brief</th>
-                        </tr>
-                    </thead>
-                    <tbody id="blog-posts-container">
-                        <!-- Blog posts will be injected here by script.js -->
-                        <tr>
-                            <td colspan="3" class="text-center py-4">
-                                <p class="data-block-text">Accessing blog database...</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Videos Page -->
-        <section id="videos-page" data-page="videos" class="page-content hidden min-h-screen py-16">
-            <h2 class="section-title">videos</h2>
-            
-            <!-- Video Search & Player -->
-            <div class="data-block mb-8">
-                <h3 class="data-block-title mb-4">search <span class="text-white">youtube</span> for security tutorials</h3>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <input type="text" id="youtube-search-input" placeholder="e.g., Python for pentesters" class="terminal-input flex-grow">
-                    <button id="youtube-search-button" class="terminal-button-secondary">Search</button>
-                </div>
-                
-                <div id="video-player-container" class="mt-6 hidden">
-                    <div id="video-iframe" class="aspect-w-16 aspect-h-9 w-full"></div>
-                    <div id="video-summary-container" class="mt-4 p-4 border border-lime-400/20 rounded-md">
-                        <h4 class="text-lg font-bold">Summary:</h4>
-                        <p id="video-summary" class="data-block-text font-sans"></p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Search Results Table -->
-            <div class="overflow-x-auto">
-                <table class="w-full data-table">
-                    <thead>
-                        <tr>
-                            <th class="w-24">Image</th>
-                            <th class="text-left">Video Title</th>
-                            <th class="w-48">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="youtube-results-container">
-                        <!-- Videos will be injected here by script.js -->
-                        <tr>
-                            <td colspan="3" class="text-center py-4">
-                                <p class="data-block-text">Initializing video database...</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Contact Page -->
-        <section id="contact-page" data-page="contact" class="page-content hidden min-h-screen py-16 flex items-center justify-center">
-            <div class="data-block w-full max-w-lg">
-                <h2 class="section-title">contact</h2>
-                <div class="p-8">
-                    <p class="data-block-text font-sans text-center mb-6">
-                        Want to discuss a project or network security? Send me a message below.
-                    </p>
-                    <form class="space-y-4">
-                        <input type="text" placeholder="name" class="terminal-input">
-                        <input type="email" placeholder="email" class="terminal-input">
-                        <textarea placeholder="message" rows="5" class="terminal-input"></textarea>
-                        <button type="submit" class="terminal-button w-full">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-8 text-center text-zinc-400 text-sm border-t-2 border-lime-400/20">
-        <p class="font-sans">&copy; 2025 VKG Desir. All Rights Reserved.</p>
-    </footer>
-
-    <script src="./js/script.js"></script>
+  <!-- Script -->
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
