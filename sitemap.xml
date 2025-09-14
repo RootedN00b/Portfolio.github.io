@@ -9,7 +9,7 @@
 
   <!-- About -->
   <url>
-    <loc>https://rootedn00b.tech/about.html</loc>
+    <loc>https://rootedn00b.tech/certs.html</loc>
     <priority>0.8</priority>
   </url>
 
@@ -23,12 +23,6 @@
   <url>
     <loc>https://blog.rootedn00b.tech/</loc>
     <priority>0.7</priority>
-  </url>
-
-  <!-- Contact -->
-  <url>
-    <loc>https://rootedn00b.tech/contact.html</loc>
-    <priority>0.6</priority>
   </url>
 
 </urlset>
