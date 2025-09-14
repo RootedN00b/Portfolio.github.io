@@ -117,3 +117,28 @@ section {
 .email {
   color: white;
 }
+
+/* Certification page style */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+body {
+    font-family: 'Source Code Pro', monospace;
+    background-color: #0c0d12f0;
+}
+.cert-card {
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+}
+.cert-card:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 25px rgba(23, 191, 42, 0.2);
+}
+.modal {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+/* Header text style */
+.mb-4 {
+  color: #a3e635;
+}
