@@ -1,4 +1,4 @@
-## RootedN00b - Cybersecurity & Pentesting Portfolio
+## RootedN00b - Cybersecurity, Networking, Server administration & Pentesting Portfolio
 A professional portfolio and blog showcasing the skills of **Vasty Kervens Guivaldo Desir**, known as RootedN00b. This project serves as a central hub for my work, demonstrating my expertise as a pentester, sysadmin, and network administrator through hands-on projects and documented learning.
 
 ### Features
