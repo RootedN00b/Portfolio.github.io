@@ -92,6 +92,19 @@
                 "Web Application Penetration Testing"
             ]
         }
+        {
+            id: 7,
+            title: "Active Directory RedTeam Specialist",
+            image: "/assets/img/AD-RTS_Cert.jpeg",
+            skills: [
+                "Active Directory Fundamentals",
+                "AD Exploitation",
+                "Attacking AD Certificate Service",
+                "Lateral movement",
+                "ESXi Red Ops",
+                "Data Exfiltration"
+            ]
+        }
     ];
 
     const grid = document.getElementById('certifications-grid');
