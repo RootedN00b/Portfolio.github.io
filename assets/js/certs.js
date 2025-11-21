@@ -91,7 +91,7 @@
                 "System and Network Penetration Testing",
                 "Web Application Penetration Testing"
             ]
-        }
+        },
         {
             id: 7,
             title: "Active Directory RedTeam Specialist",
