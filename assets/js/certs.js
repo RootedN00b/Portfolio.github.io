@@ -108,14 +108,17 @@
         {
             id: 8,
             title: "Cisco Certified Network Associate",
-            image: "/assets/img/ccna_jarge.jpg",
+            image: "/assets/img/ccna_large.jpg",
             skills: [
-                "ANetwork Fundamentals",
+                "Network Fundamentals",
                 "Network Access & Connectivity",
                 "Architecture and Services",
-                "Assurance and Automation",
+                "Automation",
                 "Core Routing and Connectivity",
-                "Security"
+                "Security",
+                "Virtualization",
+                "Wireless implementation",
+                "Network segmentation"
             ]
         }
     ];
