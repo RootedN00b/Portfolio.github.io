@@ -104,7 +104,7 @@
                 "ESXi Red Ops",
                 "Data Exfiltration"
             ]
-        }
+        },
         {
             id: 8,
             title: "Cisco Certified Network Associate",
