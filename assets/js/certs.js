@@ -105,6 +105,19 @@
                 "Data Exfiltration"
             ]
         }
+        {
+            id: 8,
+            title: "Cisco Certified Network Associate",
+            image: "/assets/img/ccna_jarge.jpg",
+            skills: [
+                "ANetwork Fundamentals",
+                "Network Access & Connectivity",
+                "Architecture and Services",
+                "Assurance and Automation",
+                "Core Routing and Connectivity",
+                "Security"
+            ]
+        }
     ];
 
     const grid = document.getElementById('certifications-grid');
