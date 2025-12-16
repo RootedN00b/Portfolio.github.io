@@ -5,6 +5,35 @@
     const certifications = [
         {
             id: 1,
+            title: "Cisco Certified Network Associate",
+            image: "/assets/img/CCNA.png",
+            skills: [
+                "Network Fundamentals",
+                "Network Access & Connectivity",
+                "Architecture and Services",
+                "Automation",
+                "Core Routing and Connectivity",
+                "Security",
+                "Virtualization",
+                "Wireless implementation",
+                "Network segmentation"
+            ]
+        },
+        {
+            id: 2,
+            title: "Active Directory RedTeam Specialist",
+            image: "/assets/img/AD-RTS_Cert.jpeg",
+            skills: [
+                "Active Directory Fundamentals",
+                "AD Exploitation",
+                "Attacking AD Certificate Service",
+                "Lateral movement",
+                "ESXi Red Ops",
+                "Data Exfiltration"
+            ]
+        },
+        {
+            id: 3,
             title: "Junior Penetration Tester (PT1)",
             image: "/assets/img/PT1.png",
             skills: [
@@ -14,7 +43,7 @@
             ]
         },
         {
-            id: 2,
+            id: 4,
             title: "Red Team Operator",
             image: "/assets/img/RTO.png",
             skills: [
@@ -35,7 +64,7 @@
             ]
         },
         {
-            id: 3,
+            id: 5,
             title: "Certified Red Team Analyst",
             image: "/assets/img/CRTA.png",
             skills: [
@@ -51,7 +80,7 @@
             ]
         },
         {
-            id: 4,
+            id: 6,
             title: "Certified Red Team Professional",
             image: "/assets/img/CRTP.png",
             skills: [
@@ -69,7 +98,7 @@
             ]
         },
         {
-            id: 5,
+            id: 7,
             title: "Practical Network Penetration Tester",
             image: "/assets/img/PNPT.png",
             skills: [
@@ -82,7 +111,7 @@
             ]
         },
         {
-            id: 6,
+            id: 8,
             title: "eLearnSecurity Junior Penetration Tester v2",
             image: "/assets/img/EJPTv2.png",
             skills: [
@@ -90,35 +119,6 @@
                 "System and Network Auditing",
                 "System and Network Penetration Testing",
                 "Web Application Penetration Testing"
-            ]
-        },
-        {
-            id: 7,
-            title: "Active Directory RedTeam Specialist",
-            image: "/assets/img/AD-RTS_Cert.jpeg",
-            skills: [
-                "Active Directory Fundamentals",
-                "AD Exploitation",
-                "Attacking AD Certificate Service",
-                "Lateral movement",
-                "ESXi Red Ops",
-                "Data Exfiltration"
-            ]
-        },
-        {
-            id: 8,
-            title: "Cisco Certified Network Associate",
-            image: "/assets/img/ccna_large.jpg",
-            skills: [
-                "Network Fundamentals",
-                "Network Access & Connectivity",
-                "Architecture and Services",
-                "Automation",
-                "Core Routing and Connectivity",
-                "Security",
-                "Virtualization",
-                "Wireless implementation",
-                "Network segmentation"
             ]
         }
     ];
