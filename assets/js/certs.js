@@ -5,6 +5,19 @@
     const certifications = [
         {
             id: 1,
+            title: "Fortinet Certified Associate in Cybersecurity",
+            image: "/assets/img/FCA.png",
+            skills: [
+                "Fortigate Firewall Management",
+                "Intrusion Prevention System (IPS)",
+                "Antivirus",
+                "Web Filtering",
+                "IPSec / SSL VPN",
+                "Cybersecurity"
+            ]
+        },
+        {
+            id: 2,
             title: "Cisco Certified Network Associate",
             image: "/assets/img/CCNA.png",
             skills: [
@@ -20,7 +33,7 @@
             ]
         },
         {
-            id: 2,
+            id: 3,
             title: "Active Directory RedTeam Specialist",
             image: "/assets/img/AD-RTS_Cert.jpeg",
             skills: [
@@ -33,7 +46,7 @@
             ]
         },
         {
-            id: 3,
+            id: 4,
             title: "Junior Penetration Tester (PT1)",
             image: "/assets/img/PT1.png",
             skills: [
@@ -43,7 +56,7 @@
             ]
         },
         {
-            id: 4,
+            id: 5,
             title: "Red Team Operator",
             image: "/assets/img/RTO.png",
             skills: [
@@ -64,7 +77,7 @@
             ]
         },
         {
-            id: 5,
+            id: 6,
             title: "Certified Red Team Analyst",
             image: "/assets/img/CRTA.png",
             skills: [
@@ -80,7 +93,7 @@
             ]
         },
         {
-            id: 6,
+            id: 7,
             title: "Certified Red Team Professional",
             image: "/assets/img/CRTP.png",
             skills: [
@@ -98,7 +111,7 @@
             ]
         },
         {
-            id: 7,
+            id: 8,
             title: "Practical Network Penetration Tester",
             image: "/assets/img/PNPT.png",
             skills: [
@@ -111,7 +124,7 @@
             ]
         },
         {
-            id: 8,
+            id: 9,
             title: "eLearnSecurity Junior Penetration Tester v2",
             image: "/assets/img/EJPTv2.png",
             skills: [
