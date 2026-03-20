@@ -1,196 +1,232 @@
-// Use a self-invoking function to avoid global variables
-(function() {
+/* ── RootedN00b Portfolio — Certifications Script ── */
+(function () {
 
-    // Sample data for certifications
-    const certifications = [
-        {
-            id: 1,
-            title: "Fortinet Certified Associate in Cybersecurity",
-            image: "/assets/img/FCA.png",
-            skills: [
-                "Fortigate Firewall Management",
-                "Intrusion Prevention System (IPS)",
-                "Antivirus",
-                "Web Filtering",
-                "IPSec / SSL VPN",
-                "Cybersecurity"
-            ]
-        },
-        {
-            id: 2,
-            title: "Cisco Certified Network Associate",
-            image: "/assets/img/CCNA.png",
-            skills: [
-                "Network Fundamentals",
-                "Network Access & Connectivity",
-                "Architecture and Services",
-                "Automation",
-                "Core Routing and Connectivity",
-                "Security",
-                "Virtualization",
-                "Wireless implementation",
-                "Network segmentation"
-            ]
-        },
-        {
-            id: 3,
-            title: "Active Directory RedTeam Specialist",
-            image: "/assets/img/AD-RTS_Cert.jpeg",
-            skills: [
-                "Active Directory Fundamentals",
-                "AD Exploitation",
-                "Attacking AD Certificate Service",
-                "Lateral movement",
-                "ESXi Red Ops",
-                "Data Exfiltration"
-            ]
-        },
-        {
-            id: 4,
-            title: "Junior Penetration Tester (PT1)",
-            image: "/assets/img/PT1.png",
-            skills: [
-                "Web Application Penetration Testing",
-                "System & Network Penetration Testing",
-                "Active Directory Penetration Testing"
-            ]
-        },
-        {
-            id: 5,
-            title: "Red Team Operator",
-            image: "/assets/img/RTO.png",
-            skills: [
-                "Law & Compliance",
-                "Reconnaissance",
-                "Initial Access",
-                "Privilege Escalation",
-                "User Impersonation",
-                "Persistence",
-                "Lateral Movement",
-                "Credential Access",
-                "Pivoting",
-                "Active Directory",
-                "Post-Exploitation",
-                "Defense Avasion",
-                "Attacking Forest & Domain Trust",
-                "Reporting"
-            ]
-        },
-        {
-            id: 6,
-            title: "Certified Red Team Analyst",
-            image: "/assets/img/CRTA.png",
-            skills: [
-                "Penetration Testing",
-                "Understanding of MITRE ATT&CK Framework",
-                "Understanding of Web & Network Level Attacks",
-                "Internal & External Red Teaming Methodology",
-                "Understanding of technologies used in Enterprise Environment",
-                "Windows Security",
-                "Adversary Simulation",
-                "Active Directory Attacks",
-                "Pivoting Multi-OS environment"
-            ]
-        },
-        {
-            id: 7,
-            title: "Certified Red Team Professional",
-            image: "/assets/img/CRTP.png",
-            skills: [
-                "Enterprise Security",
-                "Active Directory Penetration Testing",
-                "Active Directory",
-                "Red Team Attack Simulation",
-                "Windows Security",
-                "Infosec",
-                "Network Security",
-                "Information Security",
-                "Powershell",
-                "Blue Team",
-                "Active Directory Security"
-            ]
-        },
-        {
-            id: 8,
-            title: "Practical Network Penetration Tester",
-            image: "/assets/img/PNPT.png",
-            skills: [
-                "OSINT",
-                "Enumeration",
-                "Network Information Gathering",
-                "Ethical Hacking",
-                "Penetration Testing",
-                "Active Directory Exploitation"
-            ]
-        },
-        {
-            id: 9,
-            title: "eLearnSecurity Junior Penetration Tester v2",
-            image: "/assets/img/EJPTv2.png",
-            skills: [
-                "Assessment Methodologies",
-                "System and Network Auditing",
-                "System and Network Penetration Testing",
-                "Web Application Penetration Testing"
-            ]
-        }
-    ];
-
-    const grid = document.getElementById('certifications-grid');
-    const modal = document.getElementById('cert-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const skillsList = document.getElementById('skills-list');
-    const closeModalBtn = document.getElementById('close-modal');
-
-    // Function to render certification cards
-    function renderCertifications() {
-        grid.innerHTML = ''; // Clear existing content
-        certifications.forEach(cert => {
-            const card = document.createElement('div');
-            card.classList.add('bg-white', 'rounded-xl', 'shadow-md', 'overflow-hidden', 'cert-card', 'p-4');
-            
-            card.innerHTML = `
-                <img src="${cert.image}" alt="${cert.title} Certification" class="rounded-lg mb-4 w-full h-auto object-cover">
-                <div class="text-center">
-                    <h2 class="text-lg font-semibold text-gray-800">${cert.title}</h2>
-                </div>
-            `;
-            
-            // Add click event listener to open the modal
-            card.addEventListener('click', () => openModal(cert));
-            grid.appendChild(card);
-        });
+  const CERTS = [
+    {
+      id: 'CDSA',
+      title: 'Certified Defensive Security Analyst',
+      image: 'assets/img/CDSA.png',
+      issuer: 'HackTheBox',
+      color: '#125ef6',
+      skills: [
+        'SOC Processes & Methodologies',
+        'SIEM Operations (ELK/Splunk)',
+        'Tactical Analytics',
+        'Log Analysis',
+        'Threat Hunting',
+        'Active Directory Attack Analysis',
+        'Network Traffic Analysis (Incl. IDS/IPS)',
+        'Malware Analysis',
+        'DFIR Operations'
+      ]
+    },
+    {
+      id: 'FCA',
+      title: 'Fortinet Certified Associate in Cybersecurity',
+      image: 'assets/img/FCA.png',
+      issuer: 'Fortinet',
+      color: '#125ef6',
+      skills: [
+        'Fortigate Firewall Management',
+        'Intrusion Prevention System (IPS)',
+        'Antivirus & Web Filtering',
+        'IPSec / SSL VPN',
+        'Cybersecurity Fundamentals',
+        'Network Access Control'
+      ]
+    },
+    {
+      id: 'CCNA',
+      title: 'Cisco Certified Network Associate',
+      image: 'assets/img/CCNA.png',
+      issuer: 'Cisco',
+      color: '#125ef6',
+      skills: [
+        'Network Fundamentals',
+        'Network Access & Connectivity',
+        'Routing & Switching',
+        'Core Architecture & Services',
+        'Network Automation',
+        'Security & Virtualization',
+        'Wireless Implementation',
+        'Network Segmentation'
+      ]
+    },
+    {
+      id: 'AD_RTS',
+      title: 'Active Directory Red Team Specialist',
+      image: 'assets/img/AD-RTS_Cert.jpeg',
+      issuer: 'Sektor7 / Custom',
+      color: '#f70e48',
+      skills: [
+        'Active Directory Fundamentals',
+        'AD Exploitation & Enumeration',
+        'Attacking AD Certificate Services (ADCS)',
+        'Lateral Movement Techniques',
+        'ESXi Red Ops',
+        'Data Exfiltration'
+      ]
+    },
+    {
+      id: 'PT1',
+      title: 'Junior Penetration Tester (PT1)',
+      image: 'assets/img/PT1.png',
+      issuer: 'TCM Security',
+      color: '#f70e48',
+      skills: [
+        'Web Application Penetration Testing',
+        'System & Network Penetration Testing',
+        'Active Directory Penetration Testing'
+      ]
+    },
+    {
+      id: 'RTO',
+      title: 'Red Team Operator',
+      image: 'assets/img/RTO.png',
+      issuer: 'Zero-Point Security',
+      color: '#f70e48',
+      skills: [
+        'Law & Compliance',
+        'Reconnaissance & Initial Access',
+        'Privilege Escalation',
+        'User Impersonation & Persistence',
+        'Lateral Movement',
+        'Active Directory Attacks',
+        'Credential Access',
+        'Pivoting',
+        'Defense Evasion',
+        'Post-Exploitation',
+        'Attacking Forest & Domain Trust',
+        'Reporting'
+      ]
+    },
+    {
+      id: 'CRTA',
+      title: 'Certified Red Team Analyst',
+      image: 'assets/img/CRTA.png',
+      issuer: 'AlteredSecurity',
+      color: '#f70e48',
+      skills: [
+        'Penetration Testing Methodology',
+        'MITRE ATT&CK Framework',
+        'Web & Network Level Attacks',
+        'Internal & External Red Teaming',
+        'Enterprise Environment Technologies',
+        'Active Directory Attacks',
+        'Adversary Simulation',
+        'Pivoting in Multi-OS Environments'
+      ]
+    },
+    {
+      id: 'CRTP',
+      title: 'Certified Red Team Professional',
+      image: 'assets/img/CRTP.png',
+      issuer: 'AlteredSecurity',
+      color: '#f70e48',
+      skills: [
+        'Enterprise Security',
+        'Active Directory Penetration Testing',
+        'Red Team Attack Simulation',
+        'Windows Security',
+        'Network Security',
+        'PowerShell Tradecraft',
+        'Blue Team Awareness',
+        'Active Directory Security',
+        'Infosec'
+      ]
+    },
+    {
+      id: 'PNPT',
+      title: 'Practical Network Penetration Tester',
+      image: 'assets/img/PNPT.png',
+      issuer: 'TCM Security',
+      color: '#f70e48',
+      skills: [
+        'OSINT & Reconnaissance',
+        'Enumeration Techniques',
+        'Network Information Gathering',
+        'Ethical Hacking',
+        'Active Directory Exploitation',
+        'Report Writing'
+      ]
+    },
+    {
+      id: 'EJPTv2',
+      title: 'eLearnSecurity Junior Penetration Tester v2',
+      image: 'assets/img/EJPTv2.png',
+      issuer: 'INE Security',
+      color: '#f70e48',
+      skills: [
+        'Assessment Methodologies',
+        'System & Network Auditing',
+        'System & Network Penetration Testing',
+        'Web Application Penetration Testing'
+      ]
     }
+  ];
 
-    // Function to open the modal and populate with data
-    function openModal(cert) {
-        modalImage.src = cert.image;
-        modalTitle.textContent = cert.title;
-        skillsList.innerHTML = '';
-        cert.skills.forEach(skill => {
-            const li = document.createElement('li');
-            li.textContent = skill;
-            skillsList.appendChild(li);
-        });
-        modal.classList.remove('hidden');
-    }
+  // ── Render grid ──
+  const grid = document.getElementById('certifications-grid');
+  if (!grid) return;
 
-    // Function to close the modal
-    function closeModal() {
-        modal.classList.add('hidden');
-    }
+  CERTS.forEach((cert, idx) => {
+    const tile = document.createElement('div');
+    tile.className = 'cert-tile reveal';
+    tile.style.animationDelay = (idx * 0.06) + 's';
+    tile.setAttribute('data-id', cert.id);
+    tile.innerHTML = `
+      <div class="cert-img-wrap">
+        <img src="${cert.image}" alt="${cert.title}" loading="lazy"/>
+      </div>
+      <div class="cert-meta">
+        <div class="cert-issuer">${cert.issuer}</div>
+        <div class="cert-title-text">${cert.title}</div>
+        <div class="cert-hint">
+          <span class="cert-hint-icon" style="color:${cert.color}">▸</span>
+          Click for details
+        </div>
+      </div>
+      <div class="cert-accent-bar" style="background:${cert.color}"></div>
+    `;
+    tile.addEventListener('click', () => openModal(cert));
+    grid.appendChild(tile);
+  });
 
-    // Event listeners
-    closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        // Close modal when clicking outside the content area
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
+  // ── Modal ──
+  const overlay    = document.getElementById('modal-overlay');
+  const modalImg   = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modal-cert-title');
+  const modalIssuer= document.getElementById('modal-issuer');
+  const modalSkills= document.getElementById('modal-skills');
+  const modalClose = document.getElementById('modal-close');
+  const modalAccent= document.getElementById('modal-accent');
 
-    // Initial render
-    window.onload = renderCertifications;
+  function openModal(cert) {
+    modalImg.src         = cert.image;
+    modalImg.alt         = cert.title;
+    modalTitle.textContent  = cert.title;
+    modalIssuer.textContent = '// Issued by: ' + cert.issuer;
+    modalAccent.style.background = cert.color;
+    modalAccent.style.boxShadow  = `0 0 20px ${cert.color}55`;
+
+    modalSkills.innerHTML = cert.skills.map(s =>
+      `<div class="modal-skill-item">
+        <span class="skill-bullet" style="color:${cert.color}">▸</span>
+        <span>${s}</span>
+      </div>`
+    ).join('');
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (overlay)   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 })();
