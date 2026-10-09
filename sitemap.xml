@@ -3,25 +3,25 @@
 
   <!-- Home -->
   <url>
-    <loc>https://rootedn00b.tech/</loc>
+    <loc>https://rootedn00b.com/</loc>
     <priority>1.0</priority>
   </url>
 
   <!-- About -->
   <url>
-    <loc>https://rootedn00b.tech/certs.html</loc>
+    <loc>https://rootedn00b.com/certs.html</loc>
     <priority>0.8</priority>
   </url>
 
   <!-- Projects -->
   <url>
-    <loc>https://rootedn00b.tech/index.html</loc>
+    <loc>https://rootedn00b.com/index.html</loc>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog (external, but link it for SEO consistency) -->
   <url>
-    <loc>https://blog.rootedn00b.tech/</loc>
+    <loc>https://blog.rootedn00b.com/</loc>
     <priority>0.7</priority>
   </url>
 
